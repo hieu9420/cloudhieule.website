@@ -1,0 +1,73 @@
+@import 'variables';
+@import 'flex';
+@import 'input';
+@import 'main';
+@import 'button';
+@import 'animate';
+@import 'a';
+
+.header-section {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    min-height: 50px;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.header-logo__img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.header-search__input {
+    width: 100%;
+}
+
+.header-search__icon {
+    width: 15px;
+    margin-left: 10px;
+    height: auto;
+    cursor: pointer;
+}
+
+.icon-menu {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.header-account {
+    justify-content: flex-end;
+}
+
+footer {
+    margin-top: 15px;
+    border-top: 2px dashed #d1d1d1;
+}
+
+.scroll-main-top{
+    position: fixed;
+    z-index: 2;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: rgba(0,0,0,24%) 0px 3px 8px;
+    bottom: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.scroll-main-top--img{
+    width: 100%;
+}
+
+@media (max-width: 567px) {
+    .header-search {
+        display: none;
+    }
+    .header-menu {
+        width: 60%;
+        min-width: 60%;
+        max-width: 60%;
+    }
+}

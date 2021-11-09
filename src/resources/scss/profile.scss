@@ -1,0 +1,256 @@
+.section-info{
+    margin-top: 10px;
+}
+.homepage-profile__header{
+    position: relative;
+}
+.homepage-profile__bg-img{
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+
+.homepage-profile__avartar{
+    position: absolute;
+    bottom: 0;
+}
+.homepage-profile__avartar-img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #d1d1d1;
+}
+
+.homepage-profile__null-area{
+    width: 100%;
+    height: 100px;
+    background: transparent;
+}
+
+.homepage-profile__name-and-bio--name{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.section-main{
+    padding: 25px 10px 10px 10px;
+    align-items: flex-start;
+}
+.section-main__left, .section-main__right{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.section-main__left{
+    margin-right: 5px;
+    width: calc(30% - 5px);
+}
+.section-main__right{
+    margin-left: 5px;
+    width: calc(70% - 5px);
+}
+//skill
+.progressBar {
+    width: 100%;
+	margin-bottom: 26px;
+	margin-bottom: 1.66em;
+	position: relative;
+	
+}
+.progressBar h4 {
+	font-size: 16px;
+	text-transform: none;
+	margin-bottom: 7px;
+	margin-bottom: .33em;
+	color: #2E1437;
+}
+.progressBarcontainer {
+	width: 100%;
+	height: 10px;
+	background: #E1E1E1!important;
+	overflow: hidden;
+	border-radius: 0.3em;
+    margin-top: 20px;
+}
+.progressBarValue {
+	height: 10px;
+	float: left;
+	border-radius: 0.3em;
+	background: #e55d87; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+	background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+	background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+}
+
+.speech-bubble {
+	font-size: 0.75em;
+	line-height: 2em;
+	position: absolute;
+	top: 0.4em;
+	text-align: center;
+	min-width: 3em;
+	border-radius: 0.3em;
+	color: white;
+	display: none;
+    overflow: visible;
+}
+
+.speech-bubble:after {
+	border: 0.5em solid transparent;
+	content: "";
+	margin-left: -0.5em;
+	position: absolute;
+	bottom: -50%;
+	left: 50%;
+}
+.html {
+	left: calc(88.5% - 1.5em);
+}
+
+.css{
+    left: calc(78.5% - 1.5em);
+}
+
+.javascript{
+  left: calc(58.5% - 1.5em);
+} 
+
+.jquery{
+  left: calc(68.5% - 1.5em);
+}
+
+.node{
+    left: calc(48.5% - 1.5em);
+  }
+.html,
+.css,
+.javascript,
+.node,
+.jquery {
+  background: #a487b2;
+}
+.html::after{
+    border-top-color:#a487b2;
+}
+
+.css:after{
+  border-top-color:#a487b2;
+}
+
+.javascript:after{
+  border-top-color:#a487b2;
+}
+
+.node:after{
+  border-top-color:#a487b2;
+}
+
+.jquery:after{
+  border-top-color:#a487b2;
+}
+
+//left
+.section-main__info{
+    justify-content: flex-start;
+    height: auto;
+    min-height: 45px;
+}
+.section-main__info i{
+    width: 20px;
+    min-width: 20px;
+}
+
+.section-main__info--sub{
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.section_sub-menu{
+    padding: 10px;
+    align-items: flex-start;
+}
+
+.section-sub-menu__left{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    margin-right: 5px;
+    padding: 10px;
+}
+
+.section-sub-menu__right{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 10px;
+}
+
+.section-sub-menu__left{
+    align-items: flex-start;
+}
+
+.section-sub-menu__skill{
+    min-height: 35px;
+    margin: 0 0 0 5px;
+}
+
+.section-sub-menu__header{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.section-sub-menu__right .nav-link:hover{
+    font-weight: 600;
+}
+
+@media (max-width: 768px){
+    .section_sub-menu{
+        flex-direction: column;
+        padding: 25px 10px 10px 10px;
+        text-align: center;
+    }
+
+    .section-main{
+        padding: 5px 10px 10px 10px;
+    }
+
+    .section-sub-menu__left{
+        margin: 0 0 5px 0;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        align-items: center;
+    }
+    
+    .section-sub-menu__right{
+        margin: 5px 0 0 0;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .homepage-profile__name-and-bio--name{
+        font-size: 1rem;
+    }
+    .homepage-profile__null-area{
+        height: 50px;
+    }
+    .homepage-profile__avartar-img{
+        width: 150px;
+        height: 150px;
+    }
+    .section-main{
+        flex-direction: column !important;
+    }
+    .section-main__left{
+        margin-bottom: 10px;
+    }
+    .section-main__left, .section-main__right{
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+}

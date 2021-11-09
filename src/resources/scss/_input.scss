@@ -1,0 +1,27 @@
+input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #d1d1d1;
+    &:hover {
+        border-bottom: 1px solid #d1d1d1;
+    }
+    &:focus {
+        border-bottom: 1px solid #505050;
+    }
+}
+
+a {
+    color: black;
+    &:link {
+        color: black;
+    }
+    &:visited {
+        color: black;
+    }
+    &:hover {
+        color: black;
+    }
+    &:active {
+        color: black;
+    }
+}

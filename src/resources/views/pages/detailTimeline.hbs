@@ -1,0 +1,15 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <div class="detail-timeline_content dis-flex flex-col mt-4">
+            <ul class="detail-timeline_ul">
+                {{#each readMoreData}}
+                    <li>{{this.content}}</li>
+                {{/each}}
+            </ul>
+
+            <a href="/" class="action-button shadow animate green">Go To HomePage</a>
+
+        </div>
+    {{/inline}}
+{{/main}}
+    
