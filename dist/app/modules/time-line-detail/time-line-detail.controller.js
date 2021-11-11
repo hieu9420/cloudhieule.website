@@ -35,7 +35,7 @@ let TimeLineDetailController = class TimeLineDetailController {
 };
 __decorate([
     (0, common_1.Get)('/:slug'),
-    (0, common_1.Render)('pages/detailTimeLine'),
+    (0, common_1.Render)('pages/cv/detailTimeLine'),
     __param(0, (0, common_1.Param)('slug')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

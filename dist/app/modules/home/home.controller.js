@@ -20,7 +20,7 @@ let HomeController = class HomeController {
     }
     async root() {
         return {
-            titlePage: 'Home Page'
+            titlePage: 'Home Page',
         };
     }
 };

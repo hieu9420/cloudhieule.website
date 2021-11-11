@@ -19,7 +19,7 @@ export class CvController {
     average: number = 0;
 
     @Get()
-    @Render('pages/cv')
+    @Render('pages/cv/cv')
     async root() {
         this.profileData = await this.cvService.getProfileData();
         this.skillData = await this.cvService.getSkillData();

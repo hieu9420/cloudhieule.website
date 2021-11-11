@@ -1,0 +1,141 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <link rel="stylesheet" href="/css/motel.css">
+        <section class="mt-4 form-group dis-flex section-content">
+            <button type="button" class="btn btn-success mr-2" type="button" data-toggle="modal" data-target="#insertDataModal">Insert Data</button>
+            <form class="form-inline my-2 my-lg-0" action="">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Find</button>
+            </form>
+        </section>
+        <section class="section-data">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Total Elec Number (KWH)</th>
+                        <th scope="col">Total Elec Cost</th>
+                        <th scope="col">Total Water Number (M3)</th>
+                        <th scope="col">Total Water Cost</th>
+                        <th scope="col">Total Cost</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each motelCostData}}
+                        <tr>
+                            <th scope="row">{{sum @index 1}}</th>
+                            <td>{{this.description}}</td>
+                            <td>{{this.elecTotalNumber}}</td>
+                            <td>{{toCurrency this.elecTotalCost}}</td>
+                            <td>{{this.waterTotalNumber}}</td>
+                            <td>{{toCurrency this.waterTotalCost}}</td>
+                            <td>{{toCurrency this.motelTotalCost}}</td>
+                            <td><a href="/motel-cost/{{this.motelID}}">View</a></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+        <!-- Modal Insert Data -->
+        <div class="modal fade" id="insertDataModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-motel modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form method="POST" action="/motel-cost/create">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Insert Data Motel</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Motel Name</label>
+                                        <select class="custom-select select-moteljs mr-sm-2" name="motelID">
+                                            <option selected>Choose...</option>
+                                            {{#each motelData}}
+                                                <option value="{{this._id}}" 
+                                                    data-motelid="{{this._id}}"
+                                                    data-motelname="{{this.motelName}}"
+                                                    data-motelbasiccost="{{this.motelBasicCost}}" 
+                                                    data-trashcost="{{this.trashCost}}" 
+                                                    data-eleceachcost="{{this.elecEachCost}}" 
+                                                    data-watereachcost="{{this.waterEachCost}}">{{this.motelName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Room Number</label>
+                                        <input type="number" class="form-control" name="roomNumber" placeholder="Room Number">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" name="description" placeholder="Description" value="Tiền trọ tháng ">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Motel Basic Cost</label>
+                                        <input type="text" readonly spect="motelBasicCost" class="form-control" placeholder="Motel Basic Cost">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Trash Cost</label>
+                                        <input type="text" readonly spect="trashCost" class="form-control" placeholder="Trash Cost">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Electronic Each Cost</label>
+                                        <input type="text" readonly spect="elecEachCost" class="form-control" placeholder="Electronic Each Cost">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Water Each Cost</label>
+                                        <input type="text" readonly spect="waterEachCost" class="form-control" placeholder="Water Each Cost">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Elec Old Number</label>
+                                        <input type="number" class="form-control"  name="elecOldNumber" placeholder="Elec Old Number">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Elec New Number</label>
+                                        <input type="number" class="form-control"  name="elecNewNumber" placeholder="Elec New Number">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Elec Total Cost</label>
+                                        <input type="number" class="form-control" name="elecTotalCost" placeholder="Elec Total Cost">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Water Old Number</label>
+                                        <input type="number" class="form-control"  name="waterOldNumber" placeholder="Water Old Number">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Water New Number</label>
+                                        <input type="number" class="form-control"  name="waterNewNumber" placeholder="Water New Number">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Water Total Cost</label>
+                                        <input type="number" class="form-control" name="waterTotalCost" placeholder="Water Total Cost">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Motel Total Cost</label>
+                                    <input type="text" class="form-control" name="motelTotalCost" placeholder="Motel Total Cost">
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary auto-calc">Auto Calc</button>
+                            <button type="submit" class="btn btn-primary">Insert Data</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script src="/js/motel.js"></script>
+        </div>
+    {{/inline}}
+{{/main}}
+    

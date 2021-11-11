@@ -8,6 +8,8 @@ hbs.registerPartials(resolve('./src/resources/views/partials'));
 hbs.registerPartials(resolve('./src/resources/views/layout'));
 hbs.registerHelper('toFixed', (number, numFixed) => parseFloat(number).toFixed(numFixed));
 hbs.registerHelper('sum', (a, b) =>  a + b);
+hbs.registerHelper('toCurrency', (amount) =>  (amount).toLocaleString('it-IT', {style: 'currency',currency: 'VND',}));
+//(motelChoose.waterEachCost).toLocaleString('it-IT', {style: 'currency',currency: 'VND',})
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

@@ -1,0 +1,30 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <link rel="stylesheet" href="/css/game.css">
+        <style>
+            .hc-luckywheel{
+                position:fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -250px;
+                margin-left: -250px;
+            }
+        </style>
+        <div class="bg dis-flex">
+            <div class="wrapper typo" id="wrapper">
+                <section id="luckywheel" class="hc-luckywheel">
+                    <div class="hc-luckywheel-container">
+                    <canvas class="hc-luckywheel-canvas" width="500px" height="500px">Vòng Xoay May Mắn</canvas>
+                    </div>
+                    <a class="hc-luckywheel-btn" href="javascript:;">Xoay</a>
+                </section>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        {{#each gameScripts}}
+            <script src="{{ this.script }}"></script>
+        {{/each}}
+        <script src="js/gameControll.js"></script>
+    {{/inline}}
+{{/main}}
+    

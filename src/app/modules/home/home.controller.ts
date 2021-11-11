@@ -10,11 +10,17 @@ export class HomeController {
     constructor(private readonly homeService: HomeService,
     ) {}
 
+    // headerScripts = [
+    //     { script: '/js/handle.right.menu.js' }
+    // ];
+
     @Get()
     @Render('pages/home')
     async root() {
         return {
-            titlePage: 'Home Page'
+            titlePage: 'Home Page',
+            // headerScripts: this.headerScripts,
+
         };
     }
     

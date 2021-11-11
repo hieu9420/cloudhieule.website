@@ -15,7 +15,7 @@ export class TimeLineDetailController {
     readMoreData: ReadMore[];
 
     @Get('/:slug')
-    @Render('pages/detailTimeLine')
+    @Render('pages/cv/detailTimeLine')
     async root(@Param('slug') slug: string){
         this.timeLineData = await this.cvService.getTimeLineDataBySlug(slug);
         this.readMoreData = await this.timeLineDetailService.getReadMoreBySlug(slug);

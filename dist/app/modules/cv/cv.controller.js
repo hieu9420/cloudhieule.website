@@ -51,7 +51,7 @@ let CvController = class CvController {
 };
 __decorate([
     (0, common_1.Get)(),
-    (0, common_1.Render)('pages/cv'),
+    (0, common_1.Render)('pages/cv/cv'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
