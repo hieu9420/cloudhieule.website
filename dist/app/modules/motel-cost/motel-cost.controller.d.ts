@@ -1,3 +1,4 @@
+import { MotelBill } from 'src/app/schema/motel.bill.schema';
 import { MotelCost } from 'src/app/schema/motel.cost.schema';
 import { Motel } from 'src/app/schema/motel.schema';
 import { MotelCostService } from './motel-cost.service';
@@ -11,4 +12,5 @@ export declare class MotelCostController {
         motelCostData: MotelCost[];
     }>;
     renderCreateForm(motelCostData: MotelCost): Promise<number>;
+    renderDetail(id: string): Promise<MotelBill[]>;
 }

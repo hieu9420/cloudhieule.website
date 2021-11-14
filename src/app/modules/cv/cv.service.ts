@@ -17,24 +17,24 @@ export class CvService {
 
     ){};
 
-    public async getProfileData(): Promise<Profile[]>{
-        return this.profileModel.find({profileKey: 'info'}).exec();
+    public async getProfileDataByKey(key: string): Promise<Profile[]>{
+        return this.profileModel.find({profileKey: 'info', key: key}).exec();
     }
 
-    public async getSkillData(): Promise<Profile[]>{
-        return this.profileModel.find({profileKey: 'skill'}).exec();
+    public async getSkillDataByKey(key: string): Promise<Profile[]>{
+        return this.profileModel.find({profileKey: 'skill', key: key}).exec();
     }
 
-    public async getTimeLineData(): Promise<TimeLine[]>{
-        return this.timeLineModel.find().exec();
+    public async getTimeLineDataByKey(key: string): Promise<TimeLine[]>{
+        return this.timeLineModel.find({key: key}).exec();
     }
 
     public async getTimeLineDataBySlug(slug: string): Promise<TimeLine[]>{
         return this.timeLineModel.find({slug: slug}).exec();
     }
 
-    public async getPointData(): Promise<Point[]>{
-        return this.pointModel.find().exec();
+    public async getPointDataByKey(key: string): Promise<Point[]>{
+        return this.pointModel.find({key: key}).exec();
     }
 
 }

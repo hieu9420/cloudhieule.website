@@ -20,6 +20,9 @@ export class Point{
   @Prop({required: true})
   points: string;
 
+  @Prop({required: true})
+  key: string;
+
 }
 
 export const PointSchema = SchemaFactory.createForClass(Point);

@@ -41,6 +41,9 @@ let MotelCostController = class MotelCostController {
             return 0;
         }
     }
+    async renderDetail(id) {
+        return await this.motelCostService.findByIDMotelCost(id);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -57,6 +60,14 @@ __decorate([
     __metadata("design:paramtypes", [motel_cost_schema_1.MotelCost]),
     __metadata("design:returntype", Promise)
 ], MotelCostController.prototype, "renderCreateForm", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    (0, common_1.Render)('pages/motel-cost/detailMotelCost'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], MotelCostController.prototype, "renderDetail", null);
 MotelCostController = __decorate([
     (0, common_1.Controller)('motel-cost'),
     __metadata("design:paramtypes", [motel_cost_service_1.MotelCostService])

@@ -11,6 +11,9 @@ export class Skill{
   @Prop({required: true})
   subSkill: string;
 
+  @Prop({required: true})
+  key: string;
+
 }
 
 export const SkillSchema = SchemaFactory.createForClass(Skill);

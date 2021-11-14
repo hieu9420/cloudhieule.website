@@ -124,31 +124,30 @@
 .node{
     left: calc(48.5% - 1.5em);
   }
+
+.knlvn{
+    left: calc(79.5% - 1.5em);
+}
+
+.kncn{
+    left: calc(69.5% - 1.5em);
+}
+
+.ta{
+    left: calc(39.5% - 1.5em);
+}
 .html,
 .css,
 .javascript,
 .node,
+.knlvn,
+.kncn,
+.ta,
 .jquery {
   background: #a487b2;
-}
-.html::after{
-    border-top-color:#a487b2;
-}
-
-.css:after{
-  border-top-color:#a487b2;
-}
-
-.javascript:after{
-  border-top-color:#a487b2;
-}
-
-.node:after{
-  border-top-color:#a487b2;
-}
-
-.jquery:after{
-  border-top-color:#a487b2;
+    &::after{
+        border-top-color:#a487b2;
+    }
 }
 
 //left

@@ -1,0 +1,157 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <link rel="stylesheet" href="/css/profile.css">
+        <link rel="stylesheet" href="/css/timeline.css">
+
+        <section class="section-info dis-flex flex-col">
+            <div class="homepage-profile__header dis-flex flex-col">
+                <div class="homepage-profile__bg dis-flex">
+                    <img src="/img/nguyen-ngoc-bg.jpg" class="homepage-profile__bg-img" alt="">
+                </div>
+                <div class="homepage-profile__avartar dis-flex">
+                    <img src="/img/nguyen-ngoc-ava.jpg" class="homepage-profile__avartar-img" alt="">
+                </div>
+                <div class="homepage-profile__null-area"></div>
+            </div>
+            <div class="homepage-profile__name-and-bio dis-flex flex-col">
+                {{#each profileData}}
+                    <div class="homepage-profile__name-and-bio--name text-center">{{this.name}}</div>
+                    <div class="homepage-profile__name-and-bio--bio text-center"><i class="fas fa-bookmark"></i> {{this.position}} <i class="fas fa-bookmark"></i></i></div>
+                {{/each}}
+            </div>
+        </section>
+
+        <section class="section_sub-menu dis-flex">
+            <div class="section-sub-menu__left dis-flex flex-70 flex-col">
+                <div class="section-sub-menu__header">Kỹ Năng Và Trình Độ</div>
+                {{#each skillData}}
+                    <li class="section-sub-menu__skill">{{ this.subSkill }}</li>
+                {{/each}}
+            </div>
+            <div class="section-sub-menu__right dis-flex flex-30 flex-col">
+                <div class="section-sub-menu__header">Liên Kết Nhanh</div>
+                <a class="nav-item nav-link active" href="#Information">Thông Tin Cơ Bản</a>
+                <a class="nav-item nav-link" href="#Skill">Kỹ Năng</a>
+                {{!-- <a class="nav-item nav-link" href="#WorkExperience">Kinh Nghiệm Làm Việc</a> --}}
+                <a class="nav-item nav-link" href="#PointTable">Bảng Điểm</a>
+            </div>
+        </section>
+
+        <section class="section-main dis-flex">
+            <div class="section-main__left dis-flex flex-30 flex-col" id="Information">
+                {{#each profileData}}
+                    <div class="section-main__info dis-flex">
+                        <i class="fas fa-mobile"></i>
+                        <div class="section-main__info--sub">{{this.phoneNum}}</div>
+                    </div>
+                    <div class="section-main__info dis-flex">
+                        <i class="fas fa-birthday-cake"></i>
+                        <div class="section-main__info--sub">{{this.birthDay}}</div>
+                    </div>
+                    <div class="section-main__info dis-flex">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <div class="section-main__info--sub">{{this.email}}</div>
+                    </div>
+                    <div class="section-main__info dis-flex">
+                        <i class="fas fa-location-arrow"></i>
+                        <div class="section-main__info--sub">{{this.subAddress}}</div>
+                    </div>
+                    <div class="section-main__info dis-flex">
+                        <i class="fas fa-school"></i>
+                        <div class="section-main__info--sub">{{this.university}}</div>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="section-main__right dis-flex flex-70 flex-col" id="Skill">
+                <div class="section-main__info-skill dis-flex flex-col">
+                    <div class="progressBar">
+                        <h4>Kỹ năng đội nhóm</h4>
+                        <div class="progressBarcontainer">
+                            <div class="speech-bubble knlvn">80%</div>
+                            <div class="progressBarValue ht "></div>
+                        </div>
+                    </div>
+                    <div class="progressBar">
+                        <h4>Kỹ năng làm việc độc lập</h4>
+                        <div class="progressBarcontainer">
+                            <div class="speech-bubble kncn">70%</div>
+                            <div class="progressBarValue cs"></div>
+                        </div>
+                    </div>
+                        
+                    <div class="progressBar">
+                        <h4>Tiếng anh</h4>
+                        <div class="progressBarcontainer">
+                            <div class="speech-bubble ta">40%</div>
+                            <div class="progressBarValue js"></div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr></hr>
+
+        {{!-- <section class="section-timeline" id="WorkExperience">
+            <h2 class="text-uppercase text-center">Kinh Nghiệm Làm Việc</h2>
+            <div class="timeline">
+                {{#each timeLineData}}
+                    <div class="container {{ this.show }}">
+                        <div class="container-timeline dis-flex">
+                            <div class="content">
+                                <h3>{{ this.company }} - {{ this.position }}</h3>
+                                <p>{{ this.timeFrom }} - {{ this.timeEnd }}</p>
+                                <p>{{ this.skill }}</p>
+                                <a href="/time-line-detail/{{this.slug}}" class="action-button shadow animate green">Read Now</a>
+                            </div>
+                            <div class="logo-company">
+                                <img src="/img/{{this.logo}}" class="logo-company-img"/>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </section> --}}
+
+        {{!-- <hr></hr> --}}
+
+        <section class="section-points" id="PointTable">
+            <div class="point_content">
+
+                <div class="point_header dis-flex mb-2">
+                    <div class="point_total mx-2">Tổng Tín Chỉ: {{totalTC}}</div>
+                    <div class="point_average mx-2">Trung Bình: {{average}}</div>
+                    <a class="action-button shadow animate green mx-2" data-toggle="collapse" data-target="#tablePointArea" aria-controls="tablePointArea" aria-expanded="false">Show More</a>
+                </div>
+
+                <div class="collapse point_table" id="tablePointArea">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tên Môn Học</th>
+                            <th scope="col">Số Tín Chỉ</th>
+                            <th scope="col">Điểm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each pointData}}
+                                <tr>
+                                    <th scope="row">{{sum @index 1}}</th>
+                                    <td>{{this.nameSubject}}</td>
+                                    <td>{{this.tc}}</td>
+                                    <td>{{toFixed this.points 1}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+        <hr></hr>
+        <script type="text/javascript" src="/js/skillNN.js"></script>
+    {{/inline}}
+{{/main}}

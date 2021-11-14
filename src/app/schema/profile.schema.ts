@@ -10,6 +10,9 @@ export class Profile {
   profileKey: string;
 
   @Prop()
+  key: string;
+
+  @Prop()
   name: string;
 
   @Prop()

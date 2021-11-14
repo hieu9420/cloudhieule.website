@@ -11,6 +11,7 @@ hbs.registerHelper('sum', (a, b) => a + b);
 hbs.registerHelper('toCurrency', (amount) => (amount).toLocaleString('it-IT', { style: 'currency', currency: 'VND', }));
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors();
     app.useStaticAssets((0, path_1.resolve)('./src/public'));
     app.setBaseViewsDir((0, path_1.resolve)('./src/resources/views'));
     app.setViewEngine('hbs');

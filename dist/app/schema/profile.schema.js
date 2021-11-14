@@ -20,6 +20,10 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], Profile.prototype, "key", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], Profile.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),

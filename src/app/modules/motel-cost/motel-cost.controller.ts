@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Redirect, Render } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Redirect, Render, Res } from '@nestjs/common';
 import { MotelBill } from 'src/app/schema/motel.bill.schema';
 import { MotelCost } from 'src/app/schema/motel.cost.schema';
 import { Motel } from 'src/app/schema/motel.schema';
@@ -34,5 +34,11 @@ export class MotelCostController {
         else{
             return 0;
         }
+    }
+
+    @Get(':id')
+    @Render('pages/motel-cost/detailMotelCost')
+    async renderDetail(@Param('id') id: string){
+        return await this.motelCostService.findByIDMotelCost(id);
     }
 }

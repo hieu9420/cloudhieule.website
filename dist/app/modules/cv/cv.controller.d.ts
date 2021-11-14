@@ -22,4 +22,12 @@ export declare class CvController {
         average: number;
         layout: boolean;
     }>;
+    renderCV(): Promise<{
+        titlePage: string;
+        profileData: Profile[];
+        skillData: Skill[];
+        pointData: Point[];
+        totalTC: number;
+        average: number;
+    }>;
 }

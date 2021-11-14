@@ -36,6 +36,9 @@ let MotelCostService = class MotelCostService {
         const createdMotelCost = new this.motelCostModel(MotelCostModel);
         return createdMotelCost.save();
     }
+    async findByIDMotelCost(id) {
+        return this.motelBillModel.find({ _id: id }).exec();
+    }
 };
 MotelCostService = __decorate([
     (0, common_1.Injectable)(),

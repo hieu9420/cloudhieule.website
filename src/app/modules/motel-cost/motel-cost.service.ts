@@ -27,4 +27,8 @@ export class MotelCostService {
         const createdMotelCost = new this.motelCostModel(MotelCostModel);
         return createdMotelCost.save();
     }
+
+    public async findByIDMotelCost(id): Promise<MotelBill[]>{
+        return this.motelBillModel.find({_id: id}).exec();
+    }
 }

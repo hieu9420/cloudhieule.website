@@ -9,25 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SkillSchema = exports.Skill = void 0;
-const mongoose_1 = require("@nestjs/mongoose");
-let Skill = class Skill {
+exports.LoginController = void 0;
+const common_1 = require("@nestjs/common");
+const dotenv = require("dotenv");
+dotenv.config();
+let LoginController = class LoginController {
+    constructor() { }
+    async root() {
+        const apiLink = process.env.API_LINK || 'http://localhost:3003/';
+        return { apiLink: apiLink };
+    }
 };
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Skill.prototype, "profileKey", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Skill.prototype, "subSkill", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Skill.prototype, "key", void 0);
-Skill = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true })
-], Skill);
-exports.Skill = Skill;
-exports.SkillSchema = mongoose_1.SchemaFactory.createForClass(Skill);
-//# sourceMappingURL=skill.schema.js.map
+    (0, common_1.Get)(),
+    (0, common_1.Render)('pages/login/login'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], LoginController.prototype, "root", null);
+LoginController = __decorate([
+    (0, common_1.Controller)('login'),
+    __metadata("design:paramtypes", [])
+], LoginController);
+exports.LoginController = LoginController;
+//# sourceMappingURL=login.controller.js.map

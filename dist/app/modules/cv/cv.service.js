@@ -26,20 +26,20 @@ let CvService = class CvService {
         this.pointModel = pointModel;
     }
     ;
-    async getProfileData() {
-        return this.profileModel.find({ profileKey: 'info' }).exec();
+    async getProfileDataByKey(key) {
+        return this.profileModel.find({ profileKey: 'info', key: key }).exec();
     }
-    async getSkillData() {
-        return this.profileModel.find({ profileKey: 'skill' }).exec();
+    async getSkillDataByKey(key) {
+        return this.profileModel.find({ profileKey: 'skill', key: key }).exec();
     }
-    async getTimeLineData() {
-        return this.timeLineModel.find().exec();
+    async getTimeLineDataByKey(key) {
+        return this.timeLineModel.find({ key: key }).exec();
     }
     async getTimeLineDataBySlug(slug) {
         return this.timeLineModel.find({ slug: slug }).exec();
     }
-    async getPointData() {
-        return this.pointModel.find().exec();
+    async getPointDataByKey(key) {
+        return this.pointModel.find({ key: key }).exec();
     }
 };
 CvService = __decorate([

@@ -21,10 +21,10 @@ let CvController = class CvController {
         this.average = 0;
     }
     async root() {
-        this.profileData = await this.cvService.getProfileData();
-        this.skillData = await this.cvService.getSkillData();
-        this.timeLineData = await this.cvService.getTimeLineData();
-        this.pointData = await this.cvService.getPointData()
+        this.profileData = await this.cvService.getProfileDataByKey('hieu-le');
+        this.skillData = await this.cvService.getSkillDataByKey('hieu-le');
+        this.timeLineData = await this.cvService.getTimeLineDataByKey('hieu-le');
+        this.pointData = await this.cvService.getPointDataByKey('hieu-le')
             .then(points => {
             let totalPoint = 0;
             let totalTCTemp = 0;
@@ -48,14 +48,46 @@ let CvController = class CvController {
             layout: false,
         };
     }
+    async renderCV() {
+        this.profileData = await this.cvService.getProfileDataByKey('nguyen-ngoc');
+        this.skillData = await this.cvService.getSkillDataByKey('nguyen-ngoc');
+        this.pointData = await this.cvService.getPointDataByKey('nguyen-ngoc')
+            .then(points => {
+            let totalPoint = 0;
+            let totalTCTemp = 0;
+            for (let i = 0; i < points.length; i++) {
+                totalTCTemp += points[i].tc;
+                totalPoint += Number(points[i].points);
+            }
+            this.totalTC = totalTCTemp;
+            this.average = Number((totalPoint / points.length).toFixed(2));
+            return points;
+        })
+            .catch();
+        return {
+            titlePage: 'Curriculum Vitae',
+            profileData: this.profileData,
+            skillData: this.skillData,
+            pointData: this.pointData,
+            totalTC: this.totalTC,
+            average: this.average,
+        };
+    }
 };
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('/hieu-le'),
     (0, common_1.Render)('pages/cv/cv'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CvController.prototype, "root", null);
+__decorate([
+    (0, common_1.Get)('/nguyen-ngoc'),
+    (0, common_1.Render)('pages/cv/cvNguyenNgoc'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CvController.prototype, "renderCV", null);
 CvController = __decorate([
     (0, common_1.Controller)('cv'),
     __metadata("design:paramtypes", [cv_service_1.CvService])

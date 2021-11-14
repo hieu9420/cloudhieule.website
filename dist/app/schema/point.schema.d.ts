@@ -6,5 +6,6 @@ export declare class Point {
     semester: string;
     tc: number;
     points: string;
+    key: string;
 }
 export declare const PointSchema: import("mongoose").Schema<Document<Point, any, any>, import("mongoose").Model<Document<Point, any, any>, any, any, any>, {}>;

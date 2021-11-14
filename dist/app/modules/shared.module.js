@@ -13,6 +13,7 @@ const cv_module_1 = require("./cv/cv.module");
 const time_line_detail_module_1 = require("./time-line-detail/time-line-detail.module");
 const motel_cost_module_1 = require("./motel-cost/motel-cost.module");
 const game_module_1 = require("./game/game.module");
+const login_module_1 = require("./login/login.module");
 const REUSE_LIST = [
     home_module_1.HomeModule,
     cv_module_1.CvModule,
@@ -24,7 +25,7 @@ let SharedModule = class SharedModule {
 };
 SharedModule = __decorate([
     (0, common_1.Module)({
-        imports: [...REUSE_LIST],
+        imports: [...REUSE_LIST, login_module_1.LoginModule],
         exports: [...REUSE_LIST]
     })
 ], SharedModule);

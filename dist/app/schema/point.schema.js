@@ -33,6 +33,10 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Point.prototype, "points", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Point.prototype, "key", void 0);
 Point = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], Point);

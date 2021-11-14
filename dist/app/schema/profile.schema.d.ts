@@ -2,6 +2,7 @@ import { Document } from 'mongoose';
 export declare type ProfileDocument = Profile & Document;
 export declare class Profile {
     profileKey: string;
+    key: string;
     name: string;
     birthDay: string;
     email: string;

@@ -5,6 +5,8 @@
 src/public/css/
 /node_modules
 
+.env
+
 # Logs
 logs
 *.log

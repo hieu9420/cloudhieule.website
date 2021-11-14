@@ -4,6 +4,7 @@ import { CvModule } from './cv/cv.module';
 import { TimeLineDetailModule } from './time-line-detail/time-line-detail.module';
 import { MotelCostModule } from './motel-cost/motel-cost.module';
 import { GameModule } from './game/game.module';
+import { LoginModule } from './login/login.module';
 
 const REUSE_LIST = [
   HomeModule,
@@ -15,7 +16,7 @@ const REUSE_LIST = [
 
 
 @Module({
-  imports: [...REUSE_LIST],
+  imports: [...REUSE_LIST, LoginModule],
   exports: [...REUSE_LIST]
 })
 export class SharedModule {}
