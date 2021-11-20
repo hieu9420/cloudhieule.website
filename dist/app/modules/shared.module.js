@@ -14,18 +14,21 @@ const time_line_detail_module_1 = require("./time-line-detail/time-line-detail.m
 const motel_cost_module_1 = require("./motel-cost/motel-cost.module");
 const game_module_1 = require("./game/game.module");
 const login_module_1 = require("./login/login.module");
+const cmsn_module_1 = require("./cmsn/cmsn.module");
+const random_module_1 = require("./random/random.module");
 const REUSE_LIST = [
     home_module_1.HomeModule,
     cv_module_1.CvModule,
     time_line_detail_module_1.TimeLineDetailModule,
     motel_cost_module_1.MotelCostModule,
     game_module_1.GameModule,
+    random_module_1.RandomModule,
 ];
 let SharedModule = class SharedModule {
 };
 SharedModule = __decorate([
     (0, common_1.Module)({
-        imports: [...REUSE_LIST, login_module_1.LoginModule],
+        imports: [...REUSE_LIST, login_module_1.LoginModule, cmsn_module_1.CmsnModule],
         exports: [...REUSE_LIST]
     })
 ], SharedModule);

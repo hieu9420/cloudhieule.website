@@ -1,3 +1,4 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MotelBillSchema } from 'src/app/schema/motel.bill.schema';
@@ -8,6 +9,10 @@ import { MotelCostService } from './motel-cost.service';
 
 @Module({
   imports: [
+    HttpModule.register({
+      timeout: 5000,
+      maxRedirects: 5,
+    }),
     MongooseModule.forFeature([{ name: 'Motel', schema: MotelSchema }, ]),
     MongooseModule.forFeature([{ name: 'MotelCost', schema: MotelCostSchema }, ]),
     MongooseModule.forFeature([{ name: 'MotelBill', schema: MotelBillSchema }, ]),

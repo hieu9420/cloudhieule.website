@@ -24,10 +24,10 @@ let MotelCostController = class MotelCostController {
     }
     ;
     async root() {
-        this.motelData = await this.motelCostService.getMotelData();
+        let motelData = await this.motelCostService.getAPIAllDataMotel();
         this.motelCostData = await this.motelCostService.getAll();
         return {
-            motelData: this.motelData,
+            motelData: motelData,
             motelCostData: this.motelCostData,
         };
     }

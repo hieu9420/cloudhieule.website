@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Param, Post, Redirect, Render, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Redirect, Render, Req, Res } from '@nestjs/common';
 import { MotelBill } from 'src/app/schema/motel.bill.schema';
 import { MotelCost } from 'src/app/schema/motel.cost.schema';
 import { Motel } from 'src/app/schema/motel.schema';
 import { MotelCostService } from './motel-cost.service';
+import { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
 
 @Controller('motel-cost')
 export class MotelCostController {
@@ -13,10 +15,11 @@ export class MotelCostController {
     @Get()
     @Render('pages/motel-cost/motelCost')
     async root(){
-        this.motelData = await this.motelCostService.getMotelData();
+        let motelData = await this.motelCostService.getAPIAllDataMotel();
         this.motelCostData = await this.motelCostService.getAll();
+
         return{
-            motelData: this.motelData,
+            motelData: motelData,
             motelCostData: this.motelCostData,
 
         };

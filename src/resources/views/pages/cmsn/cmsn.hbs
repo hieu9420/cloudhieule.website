@@ -1,0 +1,14 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <section class="section-cmsn__time mt-4">
+            <h4 class="detail text-center"></h4>
+            <h2 class="cmsn__time-remain text-center"></h2>
+        </section>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script type="text/javascript" src="/js/timeRemain.js"></script>
+        <script type="text/javascript">
+            timeRemainToday();
+            getDetail();
+        </script>
+    {{/inline}}
+{{/main}}

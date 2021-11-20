@@ -14,16 +14,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MotelCostService = void 0;
 const common_1 = require("@nestjs/common");
+const axios_1 = require("@nestjs/axios");
 const motel_schema_1 = require("../../schema/motel.schema");
 const motel_cost_schema_1 = require("../../schema/motel.cost.schema");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const motel_bill_schema_1 = require("../../schema/motel.bill.schema");
+const dotenv = require("dotenv");
+dotenv.config();
 let MotelCostService = class MotelCostService {
-    constructor(motelModel, motelCostModel, motelBillModel) {
+    constructor(motelModel, motelCostModel, motelBillModel, httpService) {
         this.motelModel = motelModel;
         this.motelCostModel = motelCostModel;
         this.motelBillModel = motelBillModel;
+        this.httpService = httpService;
     }
     ;
     async getAll() {
@@ -39,6 +43,10 @@ let MotelCostService = class MotelCostService {
     async findByIDMotelCost(id) {
         return this.motelBillModel.find({ _id: id }).exec();
     }
+    async getAPIAllDataMotel() {
+        let apiLink = process.env.API_LINK + '/motel/GetAllMotelCost';
+        return await this.httpService.get(`${apiLink}`);
+    }
 };
 MotelCostService = __decorate([
     (0, common_1.Injectable)(),
@@ -47,7 +55,8 @@ MotelCostService = __decorate([
     __param(2, (0, mongoose_1.InjectModel)(motel_bill_schema_1.MotelBill.name)),
     __metadata("design:paramtypes", [mongoose_2.Model,
         mongoose_2.Model,
-        mongoose_2.Model])
+        mongoose_2.Model,
+        axios_1.HttpService])
 ], MotelCostService);
 exports.MotelCostService = MotelCostService;
 //# sourceMappingURL=motel-cost.service.js.map

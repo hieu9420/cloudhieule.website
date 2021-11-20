@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MotelCostModule = void 0;
+const axios_1 = require("@nestjs/axios");
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const motel_bill_schema_1 = require("../../schema/motel.bill.schema");
@@ -19,6 +20,10 @@ let MotelCostModule = class MotelCostModule {
 MotelCostModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            axios_1.HttpModule.register({
+                timeout: 5000,
+                maxRedirects: 5,
+            }),
             mongoose_1.MongooseModule.forFeature([{ name: 'Motel', schema: motel_schema_1.MotelSchema },]),
             mongoose_1.MongooseModule.forFeature([{ name: 'MotelCost', schema: motel_cost_schema_1.MotelCostSchema },]),
             mongoose_1.MongooseModule.forFeature([{ name: 'MotelBill', schema: motel_bill_schema_1.MotelBillSchema },]),
