@@ -1,11 +1,8 @@
 import { Body, Controller, Get, Param, Post, Redirect, Render, Req, Res } from '@nestjs/common';
-import { MotelBill } from 'src/app/schema/motel.bill.schema';
 import { MotelCost } from 'src/app/schema/motel.cost.schema';
 import { Motel } from 'src/app/schema/motel.schema';
 import { MotelCostService } from './motel-cost.service';
-import axios, { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 
 @Controller('motel-cost')
@@ -19,27 +16,19 @@ export class MotelCostController {
 
     @Get()
     @Render('pages/motel-cost/motelCost')
-    async root(@Req() request: Request, @Res() res){
+    async root(@Req() request: Request, @Res() response: Response){
         const cookie = request.cookies['jwt'];
 
         if(!cookie){
-            res.redirect('/login');
+            response.redirect('/login');
         }
 
-        const data = await this.jwtService.verifyAsync(cookie);
+        this.motelData = await this.motelCostService.getApiMotel(cookie);
         
-        if(!data){
-            res.redirect('/auth/login');
-        }
-
-        // let motelData = await axios.get('http://localhost:3003/motel/GetAllMotelCost', {withCredentials: true});
-        let motelData = await this.motelCostService.getApiMotel();
-        
-        let motelCostData = await this.motelCostService.getApiMotelCost();
-        console.log(motelCostData);
+        this.motelCostData = await this.motelCostService.getApiMotelCost(cookie);
 
         return{
-            motelData: motelData,
+            motelData: this.motelData,
             motelCostData: this.motelCostData,
 
         };

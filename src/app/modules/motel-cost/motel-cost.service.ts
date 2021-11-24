@@ -27,23 +27,19 @@ export class MotelCostService {
         return this.motelCostModel.find({}).exec();
     }
 
-    public async getApiMotel(): Promise<Motel[]>{
-        // return this.motelModel.find({}).exec();
-        return await axios.get(`${API_LIST.API_GET_ALL_MOTEL}`, {
+    public async getApiMotel(cookie): Promise<Motel[]>{
+        let motel = await axios.get(`${API_LIST.API_GET_MOTEL}`, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                "Authorization" : `Bearer ${cookie}`
             },
         })
-        .then(res => { 
-            console.log(res)
-            if(!res || res?.data){
-                return new UnauthorizedException('Can Not Get Data');
-            }
-            console.log(res.data)
+        .then(res => {
             return res.data;
         })
         .catch(error => console.log(error))
+        return motel;
       }
     
 
@@ -56,19 +52,18 @@ export class MotelCostService {
         return this.motelBillModel.find({_id: id}).exec();
     }
 
-    public async getApiMotelCost(): Promise<MotelCost[]> {
-        return await axios.get(`${API_LIST.API_GET_ALL_MOTEL_COST}`, {withCredentials: true})
+    public async getApiMotelCost(cookie): Promise<MotelCost[]> {
+        let motelCost = await axios.get(`${API_LIST.API_GET_MOTEL_COST}`, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                "Authorization" : `Bearer ${cookie}`
+            },
+        })
         .then(res => { 
-            if(!res || res?.data){
-                return new UnauthorizedException('Can Not Get Data');
-            }
             return res.data;
         })
         .catch(error => console.log(error))
-        
+        return motelCost;
     }
-
-    // public async getApiMotelCost(): Promise<Observable<AxiosResponse<MotelCost[], any>>>{
-    //     return await this.httpService.get<MotelCost[]>(`${API_LIST.API_GET_ALL_MOTEL_COST}`, { withCredentials: true }).pipe(map(res => res.data));
-    // }
 }
