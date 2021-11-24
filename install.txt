@@ -3,6 +3,8 @@ npm i --save @nestjs/mongoose mongoose
 npm i --save hbs
 npm i --save @nestjs/config
 
+$ npm i sweetalert2
+
 
 
 nest g controller Home

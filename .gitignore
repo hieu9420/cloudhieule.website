@@ -1,5 +1,8 @@
 # compiled output
-# /dist
+
+dist
+./dist
+/dist
 
 #css auto render
 src/public/css/

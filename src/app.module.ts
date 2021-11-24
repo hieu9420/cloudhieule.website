@@ -14,6 +14,7 @@ import { environmentProd } from './environments/environment.prod';
     // TimeLineDetailModule,
     SharedModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(environmentProd.API_BASE_PATH)],
+    MongooseModule.forRoot(environmentProd.API_BASE_PATH),
+    ],
 })
 export class AppModule {}

@@ -1,23 +1,17 @@
 
 {{#> main}}
     {{#*inline "content"}}
-        <input type="hidden" hidden class="api-link" value="{{apiLink}}/login">
-        <form>
+        <form method="POST" action="/login">
             <div class="form-group">
-                <label>User Name</label>
-                <input type="text" class="form-control" name="userName" placeholder="Enter User Name">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter Email">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" name="pw" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" autocomplete="0">
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button class="btn btn-primary btn-login">Login</button>
+            <button type="submit" class="btn btn-primary btn-login">Login</button>
         </form>
-        <script src="/js/login.js"></script>
     {{/inline}}
 {{/main}}
     

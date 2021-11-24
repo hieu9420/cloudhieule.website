@@ -1,15 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException  } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { Motel, MotelDocument } from '../../schema/motel.schema';
 import { MotelCost, MotelCostDocument } from '../../schema/motel.cost.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MotelBill, MotelBillDocument } from 'src/app/schema/motel.bill.schema';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { API_LIST } from '../../../config/contains/shared.api.link';
 
 import * as dotenv from 'dotenv';
+import { map, Observable, tap } from 'rxjs';
 
 dotenv.config();
 @Injectable()
@@ -27,9 +27,25 @@ export class MotelCostService {
         return this.motelCostModel.find({}).exec();
     }
 
-    public async getMotelData(): Promise<Motel[]>{
-        return this.motelModel.find({}).exec();
-    }
+    public async getApiMotel(): Promise<Motel[]>{
+        // return this.motelModel.find({}).exec();
+        return await axios.get(`${API_LIST.API_GET_ALL_MOTEL}`, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            },
+        })
+        .then(res => { 
+            console.log(res)
+            if(!res || res?.data){
+                return new UnauthorizedException('Can Not Get Data');
+            }
+            console.log(res.data)
+            return res.data;
+        })
+        .catch(error => console.log(error))
+      }
+    
 
     public async createMotelCost(MotelCostModel: MotelCost): Promise<MotelCost>{
         const createdMotelCost = new this.motelCostModel(MotelCostModel);
@@ -40,8 +56,19 @@ export class MotelCostService {
         return this.motelBillModel.find({_id: id}).exec();
     }
 
-    public async getAPIAllDataMotel(): Promise<Observable<AxiosResponse<MotelCost[], any>>> {
-        let apiLink = process.env.API_LINK + '/motel/GetAllMotelCost';
-        return await this.httpService.get<MotelCost[]>(`${apiLink}`);
-      }
+    public async getApiMotelCost(): Promise<MotelCost[]> {
+        return await axios.get(`${API_LIST.API_GET_ALL_MOTEL_COST}`, {withCredentials: true})
+        .then(res => { 
+            if(!res || res?.data){
+                return new UnauthorizedException('Can Not Get Data');
+            }
+            return res.data;
+        })
+        .catch(error => console.log(error))
+        
+    }
+
+    // public async getApiMotelCost(): Promise<Observable<AxiosResponse<MotelCost[], any>>>{
+    //     return await this.httpService.get<MotelCost[]>(`${API_LIST.API_GET_ALL_MOTEL_COST}`, { withCredentials: true }).pipe(map(res => res.data));
+    // }
 }

@@ -7,6 +7,8 @@ import { GameModule } from './game/game.module';
 import { LoginModule } from './login/login.module';
 import { CmsnModule } from './cmsn/cmsn.module';
 import { RandomModule } from './random/random.module';
+import { LogoutModule } from './logout/logout.module';
+import { TestModule } from './test/test.module';
 
 const REUSE_LIST = [
   HomeModule,
@@ -15,12 +17,15 @@ const REUSE_LIST = [
   MotelCostModule,
   GameModule,
   RandomModule,
-
+  LoginModule, 
+  CmsnModule, 
+  LogoutModule,
+  TestModule
 ];
 
 
 @Module({
-  imports: [...REUSE_LIST, LoginModule, CmsnModule],
+  imports: [...REUSE_LIST],
   exports: [...REUSE_LIST]
 })
 export class SharedModule {}
