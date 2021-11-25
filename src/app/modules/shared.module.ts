@@ -9,6 +9,7 @@ import { CmsnModule } from './cmsn/cmsn.module';
 import { RandomModule } from './random/random.module';
 import { LogoutModule } from './logout/logout.module';
 import { TestModule } from './test/test.module';
+import { ChatModule } from './chat/chat.module';
 
 const REUSE_LIST = [
   HomeModule,
@@ -20,7 +21,8 @@ const REUSE_LIST = [
   LoginModule, 
   CmsnModule, 
   LogoutModule,
-  TestModule
+  TestModule,
+  ChatModule
 ];
 
 

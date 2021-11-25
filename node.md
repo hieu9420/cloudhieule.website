@@ -1,7 +1,15 @@
+Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser 
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
 npm i -g @nestjs/cli
 npm i --save @nestjs/mongoose mongoose
 npm i --save hbs
 npm i --save @nestjs/config
+
+#for chat
+
+$ npm i @nestjs/platform-socket.io @nestjs/websockets
+$ npm i --save-dev @types/socket.io
 
 $ npm i sweetalert2
 

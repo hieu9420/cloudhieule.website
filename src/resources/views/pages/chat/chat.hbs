@@ -1,0 +1,47 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <style>
+            .scroll-chat-area{
+                min-height: 50vh;
+                max-height: 50vh;
+                overflow-x: hidden;
+                overflow-y: auto;
+                width: calc(100% - 3rem);
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            }
+            .msg-bubble {
+                max-width: 450px;
+                padding: 15px;
+                border-radius: 15px;
+                background: #ececec;
+                border-bottom-left-radius: 0;
+            }
+            .msg-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .msg-info-name {
+                margin-right: 10px;
+                font-weight: bold;
+            }
+            .msg-info-time {
+                font-size: 0.85em;
+            }
+        </style>
+        <section class="mt-4">
+            <input type="hidden" hidden class="user-id" value="{{userId}}">
+            <input type="hidden" hidden class="user-name" value="{{userName}}">
+            <h3 class="text-center">Chat With Socket IO</h3>
+            <div class="scroll-chat-area mr-4 ml-4" id="messages"></div>
+            <div class="input-group mt-4">
+                <input type="text" id="message" class="form-control">
+                <button class="btn btn-success" onclick="handleSubmitNewMessage()"><i class="fas fa-paper-plane"></i>  Send</button>
+            </div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" src="/js/chat.js"></script>
+    {{/inline}}
+{{/main}}
