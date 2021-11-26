@@ -11,6 +11,8 @@ npm i --save @nestjs/config
 $ npm i @nestjs/platform-socket.io @nestjs/websockets
 $ npm i --save-dev @types/socket.io
 
+$ npm i -D @types/multer
+
 $ npm i sweetalert2
 
 

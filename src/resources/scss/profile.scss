@@ -203,6 +203,21 @@
     font-weight: 600;
 }
 
+.edit-avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    right: 25px;
+    bottom: -35px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px){
     .section_sub-menu{
         flex-direction: column;

@@ -17,6 +17,10 @@ let submitForm = async function() {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
+      $('#openUploadAvatar').modal('hide');
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
       console.log(response);
     } catch (err) {
       console.log(err);

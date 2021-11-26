@@ -38,6 +38,9 @@ export class Profile {
 
   @Prop()
   subSkill: string;
+
+  @Prop()
+  avatar: string;
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);
