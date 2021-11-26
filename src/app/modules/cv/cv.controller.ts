@@ -10,7 +10,7 @@ export class CvController {
     constructor(private readonly cvService: CvService,
         ) {}
 
-    profileData: Profile[];
+    profileData: Profile;
     skillData: Skill[];
     timeLineData: TimeLine[];
     pointData: Point[];

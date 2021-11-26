@@ -14,10 +14,8 @@
                 <div class="homepage-profile__null-area"></div>
             </div>
             <div class="homepage-profile__name-and-bio dis-flex flex-col">
-                {{#each profileData}}
-                    <div class="homepage-profile__name-and-bio--name text-center">{{this.name}}</div>
-                    <div class="homepage-profile__name-and-bio--bio text-center"><i class="fas fa-bookmark"></i> {{this.position}} <i class="fas fa-bookmark"></i></i></div>
-                {{/each}}
+                <div class="homepage-profile__name-and-bio--name text-center">{{profileData.name}}</div>
+                <div class="homepage-profile__name-and-bio--bio text-center"><i class="fas fa-bookmark"></i> {{profileData.position}} <i class="fas fa-bookmark"></i></i></div>
             </div>
         </section>
 
@@ -39,28 +37,26 @@
 
         <section class="section-main dis-flex" data-aos="fade-in">
             <div class="section-main__left dis-flex flex-30 flex-col" id="Information">
-                {{#each profileData}}
-                    <div class="section-main__info dis-flex">
-                        <i class="fas fa-mobile"></i>
-                        <div class="section-main__info--sub">{{this.phoneNum}}</div>
-                    </div>
-                    <div class="section-main__info dis-flex">
-                        <i class="fas fa-birthday-cake"></i>
-                        <div class="section-main__info--sub">{{this.birthDay}}</div>
-                    </div>
-                    <div class="section-main__info dis-flex">
-                        <i class="fas fa-envelope-open-text"></i>
-                        <div class="section-main__info--sub">{{this.email}}</div>
-                    </div>
-                    <div class="section-main__info dis-flex">
-                        <i class="fas fa-location-arrow"></i>
-                        <div class="section-main__info--sub">{{this.subAddress}}</div>
-                    </div>
-                    <div class="section-main__info dis-flex">
-                        <i class="fas fa-school"></i>
-                        <div class="section-main__info--sub">{{this.university}}</div>
-                    </div>
-                {{/each}}
+                <div class="section-main__info dis-flex">
+                    <i class="fas fa-mobile"></i>
+                    <div class="section-main__info--sub">{{profileData.phoneNum}}</div>
+                </div>
+                <div class="section-main__info dis-flex">
+                    <i class="fas fa-birthday-cake"></i>
+                    <div class="section-main__info--sub">{{profileData.birthDay}}</div>
+                </div>
+                <div class="section-main__info dis-flex">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <div class="section-main__info--sub">{{profileData.email}}</div>
+                </div>
+                <div class="section-main__info dis-flex">
+                    <i class="fas fa-location-arrow"></i>
+                    <div class="section-main__info--sub">{{profileData.subAddress}}</div>
+                </div>
+                <div class="section-main__info dis-flex">
+                    <i class="fas fa-school"></i>
+                    <div class="section-main__info--sub">{{profileData.university}}</div>
+                </div>
             </div>
             <div class="section-main__right dis-flex flex-70 flex-col" id="Skill" data-aos="fade-in">
                 <div class="section-main__info-skill dis-flex flex-col">

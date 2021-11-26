@@ -17,8 +17,8 @@ export class CvService {
 
     ){};
 
-    public async getProfileDataByKey(key: string): Promise<Profile[]>{
-        return this.profileModel.find({profileKey: 'info', key: key}).exec();
+    public async getProfileDataByKey(key: string): Promise<Profile>{
+        return this.profileModel.findOne({profileKey: 'info', key: key}).exec();
     }
 
     public async getSkillDataByKey(key: string): Promise<Profile[]>{
