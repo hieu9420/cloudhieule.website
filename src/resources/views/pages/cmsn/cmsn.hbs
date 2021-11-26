@@ -1,11 +1,34 @@
 {{#> main}}
     {{#*inline "content"}}
-        <section class="section-cmsn__time mt-4">
-            <h4 class="detail text-center"></h4>
-            <h2 class="cmsn__time-remain text-center"></h2>
-        </section>
+        <link rel="stylesheet" href="/css/cmsn.css">
+        <canvas id="c"></canvas>
+        {{#if birthDay}}
+            <div class="card">
+                <div class="imgBox">
+                    <div class="bark"></div>
+                    <img src="https://image.ibb.co/fYzTrb/lastofus.jpg">
+                </div>
+                <div class="details">
+                    <h4 class="color1">Chúc mừng sinh nhật Bảo Bối</h2>
+                    <h4 class="color2 margin">Lần 21</h3>
+                    <p>Nhân dịp đặc biệt này</p>
+                    <p>Chúc Bảo Bối sinh đẹp dễ thương hơn,</p>
+                    <p>Ít khóc nhè lại vì CC luôn ♥ BB,</p>
+                    <p>Công việc sớm ổn định hơn nè!</p>
+                    <p>Đặc biệt thích món quà CC tặng bb nha!</p>
+                    <p class="text-right">Happy Birthday, BB!</p>
+                    <p class="text-right">♥CC♥</p>
+                </div>
+            </div>
+        {{else}}
+            <section class="section-cmsn__time mt-4">
+                <h4 class="detail text-center"></h4>
+                <h2 class="cmsn__time-remain text-center"></h2>
+            </section>
+        {{/if}}
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script type="text/javascript" src="/js/timeRemain.js"></script>
+        <script type="text/javascript" src="/js/cmsn.js"></script>
         <script type="text/javascript">
             timeRemainToday();
             getDetail();
