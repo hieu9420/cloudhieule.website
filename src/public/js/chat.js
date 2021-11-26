@@ -1,5 +1,8 @@
-const socket = io('http://localhost:3000')
-
+const socket = io('http://localhost:3000', {
+    cors: { 
+        origin: '*'
+    },
+});
 const messages = $('body').find('#messages');
 const message = $('body').find('#message');
 const senderId = $('user-id').val();
