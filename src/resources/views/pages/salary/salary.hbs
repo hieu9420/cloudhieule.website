@@ -1,0 +1,149 @@
+{{#> main}}
+    {{#*inline "content"}}
+        <link rel="stylesheet" href="/css/salary.css">
+        <h3 class="text-center mt-4 title-salary">Salary Calculate {{time}}</h3>
+        <h6 class="text-center mt-2 child-title-salary">{{chilTime}}</h6>
+        
+        <div class="input-group mt-4 mb-4">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#openModalInsert">
+                Thêm dữ liệu
+            </button>
+            <button type="button" class="btn btn-success ml-4 btn-today">
+                To Day
+            </button>
+            <button type="button" class="btn btn-success ml-4 btn-calc-dau-thang">
+                Lương tính đến đầu tháng
+            </button>
+        </div>
+        <div class="input-group mt-4 mb-4">
+            <input type="date" class="form-control" name="dateFrom" placeholder="Từ ngày">
+            <input type="date" class="form-control ml-4" name="dateTo" placeholder="Đến ngày">
+            <button type="button" class="btn btn-info ml-4 btn-filter">
+                Lọc
+            </button>
+        </div>
+        <table class="table table-hover table-responsive-md">
+            <thead>
+                <tr>
+                    <th scope="col">Thời gian vào</th>
+                    <th scope="col">Thời gian ra</th>
+                    <th scope="col">Lương tháng</th>
+                    <th scope="col">Ngày đặc biệt?</th>
+                    <th scope="col">Lương mỗi ngày</th>
+                </tr>
+            </thead>
+            <tbody class="tbody-table">
+                {{#each salaryRecord}}
+                    <tr data-id="{{_id}}" data-toggle="modal" 
+                    data-startTime="{{startTime}}"
+                    data-endTime="{{endTime}}"
+                    data-basicSalary="{{basicSalary}}"
+                    data-spectDayOT="{{spectDayOT}}"
+                    data-totalSalary="{{totalSalary}}"
+                    data-target="#openModalEditOrDelete">
+                        <td class="td-start-time">{{formatTime startTime}}</td>
+                        <td class="td-end-time">{{formatTime endTime}}</td>
+                        <td class="td-basic-salary">{{toCurrency basicSalary}}</td>
+                        <td class="td-spect-day">{{spectDayOT}}</td>
+                        <td class="td-total-salary">{{toCurrency totalSalary}}</td>
+                    </tr>
+                {{/each}}
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <th>Tạm Tính</th>
+                    <th style="color: green;" class="th-total-salaty-tt">{{toCurrency total}}</th>
+                </tr>
+                <tr>
+                    <th>Chuyên cần</th>
+                    <th>+ {{toCurrency 0}}</th>
+                    <td></td>
+                    <th>Tổng Nhận</th>
+                    <th style="color: green;" class="th-total-salaty-tn">{{toCurrency totalWithCC}}</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary">Đã làm <strong>{{totalWorking}}</strong> ngày, Trung bình lương/ngày: <strong>{{toCurrency avg}}</strong></div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="openModalInsert" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-salary" role="document">
+                <div class="modal-content">
+                    <form action="/salary/insert" method="post">
+                        <div class="modal-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label >Thời gian vào</label>
+                                    <input type="datetime-local" class="form-control" name="startTime" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label >Thời gian ra</label>
+                                    <input type="datetime-local" class="form-control" name="endTime" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label >Lương tháng</label>
+                                    <input type="number" class="form-control" name="basicSalary" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label class="my-1 mr-2">OT Ngày đặc biệt?</label>
+                                <select class="custom-select my-1 mr-sm-2" name="spectDayOT">
+                                    <option selected value="default">Chọn...</option>
+                                    <option value="dayOff">Ngày Nghỉ</option>
+                                    <option value="holiday">Ngày Lễ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit Or Delete -->
+        <div class="modal fade" id="openModalEditOrDelete" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-salary" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label >Thời gian vào</label>
+                                    <input type="datetime-local" class="form-control" name="startTime" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label >Thời gian ra</label>
+                                    <input type="datetime-local" class="form-control" name="endTime" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label >Lương tháng</label>
+                                    <input type="number" class="form-control" name="basicSalary" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <label class="my-1 mr-2">OT Ngày đặc biệt?</label>
+                                <select class="custom-select my-1 mr-sm-2" name="spectDayOT">
+                                    <option selected value="default">Chọn...</option>
+                                    <option value="dayOff">Ngày Nghỉ</option>
+                                    <option value="holiday">Ngày Lễ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-danger btn-delete">Xoá</button>
+                            <button type="button" class="btn btn-primary btn-warning btn-edit">Sửa</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/salary.js"></script>
+    {{/inline}}
+{{/main}}

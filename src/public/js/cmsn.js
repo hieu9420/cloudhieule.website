@@ -1,3 +1,38 @@
+async function autoplay(){
+    var r =confirm("Would You Like To AutoPlay Music?");
+    if (r == true) {
+        await document.getElementById("audio").play();
+    }
+}
+
+autoplay();
+
+var audio = new Audio('/cmsn.mp3');
+audio.play();
+
+// let videoElem = document.getElementById("audio");
+// let playButton = document.getElementById("playbutton");
+
+// playButton.addEventListener("click", handlePlayButton, false);
+// playVideo();
+
+// async function playVideo() {
+//   try {
+//     await videoElem.play();
+//     playButton.classList.add("playing");
+//   } catch(err) {
+//     playButton.classList.remove("playing");
+//   }
+// }
+
+// function handlePlayButton() {
+//   if (videoElem.paused) {
+//     playVideo();
+//   } else {
+//     videoElem.pause();
+//     playButton.classList.remove("playing");
+//   }
+// }
 
 var w = c.width = window.innerWidth,
 h = c.height = window.innerHeight,

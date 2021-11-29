@@ -11,6 +11,8 @@ import { LogoutModule } from './logout/logout.module';
 import { TestModule } from './test/test.module';
 import { ChatModule } from './chat/chat.module';
 import { PhotosModule } from './photos/photos.module';
+import { SalaryModule } from './salary/salary.module';
+import { ConfigModule } from './config/config.module';
 
 const REUSE_LIST = [
   HomeModule,
@@ -29,7 +31,7 @@ const REUSE_LIST = [
 
 
 @Module({
-  imports: [...REUSE_LIST],
+  imports: [...REUSE_LIST, SalaryModule, ConfigModule],
   exports: [...REUSE_LIST]
 })
 export class SharedModule {}

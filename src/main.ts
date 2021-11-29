@@ -6,12 +6,16 @@ import * as hbs from 'hbs';
 import { NotFoundExceptionFilter } from './util/NotFoundExceptionFilter';
 import * as cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
+import * as moment from 'moment';
 
 hbs.registerPartials(resolve('./src/resources/views/partials'));
 hbs.registerPartials(resolve('./src/resources/views/layout'));
 hbs.registerHelper('toFixed', (number, numFixed) => parseFloat(number).toFixed(numFixed));
 hbs.registerHelper('sum', (a, b) =>  a + b);
-hbs.registerHelper('toCurrency', (amount) =>  (amount).toLocaleString('it-IT', {style: 'currency',currency: 'VND',}));
+hbs.registerHelper('toCurrency', (amount) =>  
+  Number(amount.toString()).toLocaleString('it-IT', {style: 'currency',currency: 'VND',})
+);
+hbs.registerHelper('formatTime', (time) =>  moment(new Date(time)).format('DD-MM-YYYY HH:mm'));
 //(motelChoose.waterEachCost).toLocaleString('it-IT', {style: 'currency',currency: 'VND',})
 dotenv.config();
 const ORIGIN_WEB = process.env.ORIGIN_WEB;
